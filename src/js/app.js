@@ -1,4 +1,5 @@
 import { span, button, para } from './import-data';
+import '../css/style.css';
 
 let showtext = true;
 
