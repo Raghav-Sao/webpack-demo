@@ -1,0 +1,23 @@
+.text-center {
+	text-align: center;
+}
+
+.btn {
+	background: green;
+	color: white;
+	font-size: 13px;
+	font-weight: 500;
+	height: 30px;
+	padding: 5px 10px;
+	width: 100px;
+}
+
+.border {
+ border: 1px dashed #ccc;
+}
+
+.text-container {
+	margin-top: 50px;
+	padding: 20px;
+	font-size: 15px;
+}
