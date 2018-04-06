@@ -1,3 +1,4 @@
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var path = require('path');
 module.exports = {
 	entry: './src/js/app.js',
@@ -5,4 +6,5 @@ module.exports = {
 	module: {
 		rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }],
 	},
+	plugins: [new UglifyJsPlugin()],
 };
