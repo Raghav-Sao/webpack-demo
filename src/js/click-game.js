@@ -1,9 +1,9 @@
 import '../css/click-game-style.css';
-
-var containerSize = 100,
+var containerSize,
   boxSize,
   childNumber,
   score = 0;
+
 dGBI('clickable-container').addEventListener('click', function(event) {
   if (childNumber == event.target.id) {
     dGBI(childNumber).style.background = 'green';
@@ -23,23 +23,20 @@ function dGBI(id) {
 }
 
 dGBI('start').addEventListener('click', function() {
-  var generatedEle = generateDiv(
-    parseInt(dGBI('container-size').value),
-    parseInt(dGBI('box-size').value)
-  );
-  dGBI('container').appendChild(generatedEle);
+  containerSize = parseInt(dGBI('container-size').value);
+  boxSize = parseInt(dGBI('box-size').value);
+  var generatedEle = generateDiv();
+  dGBI('clickable-container').appendChild(generatedEle);
   var start = setInterval(generateBackgroundOnDiv, 1000);
 });
 
-function generateDiv(containerSize, boxSize) {
-  this.containerSize = containerSize;
-  this.boxSize = boxSize;
+function generateDiv() {
   var container = document.createElement('DIV');
   container.style.width = containerSize + 'px';
   container.style.height = containerSize + 'px';
   for (var row = 0; row < containerSize / boxSize; row++) {
     for (var i = 0; i < containerSize / boxSize; i++) {
-      tempDiv = document.createElement('DIV');
+      var tempDiv = document.createElement('DIV');
       tempDiv.style.width = boxSize - 2 + 'px';
       tempDiv.style.height = boxSize - 2 + 'px';
       tempDiv.style.display = 'inline-block';
@@ -50,6 +47,7 @@ function generateDiv(containerSize, boxSize) {
   }
   return container;
 }
+
 function generateBackgroundOnDiv() {
   childNumber = Math.floor(Math.random() * (containerSize / boxSize * containerSize / boxSize));
   console.log(childNumber, containerSize, boxSize);
