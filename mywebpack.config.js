@@ -9,7 +9,7 @@ var path = require('path');
 module.exports = {
 	entry: {
 		main: './src/js/app.js',
-		clickgame: './src/js/click-game.js',
+		clickGame: './src/js/click-game.js',
 	},
 	output: { path: path.resolve(__dirname, 'dist'), filename: '[name]-bundle.js' },
 	module: {
@@ -40,7 +40,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename: 'click-game.html',
 			template: 'src/click-game.html',
-			chunks: ['clickgame'],
+			chunks: ['clickGame'],
 		}),
 	],
 };
