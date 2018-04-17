@@ -40,7 +40,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename: 'click-game.html',
 			template: 'src/click-game.html',
-			chunks: ['another'],
+			chunks: ['clickgame'],
 		}),
 	],
 };
