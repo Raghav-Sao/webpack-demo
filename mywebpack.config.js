@@ -3,12 +3,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const extractPlugin = new ExtractTextPlugin({
-	filename: 'style.css',
+	filename: '[name]-style.css',
 });
 var path = require('path');
 module.exports = {
-	entry: './src/js/app.js',
-	output: { path: path.resolve(__dirname, 'dist'), filename: 'bundle.js' },
+	entry: {
+		main: './src/js/app.js',
+		clickgame: './src/js/click-game.js',
+	},
+	output: { path: path.resolve(__dirname, 'dist'), filename: '[name]-bundle.js' },
 	module: {
 		rules: [
 			{
@@ -16,6 +19,7 @@ module.exports = {
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: 'css-loader',
+					filename: '[name]-style.css',
 				}),
 			},
 			{
@@ -29,7 +33,14 @@ module.exports = {
 		extractPlugin,
 		new CleanWebpackPlugin(['dist']),
 		new HtmlWebpackPlugin({
+			filename: 'index.html',
 			template: 'src/index.html',
+			chunks: ['main'],
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'click-game.html',
+			template: 'src/click-game.html',
+			chunks: ['another'],
 		}),
 	],
 };
